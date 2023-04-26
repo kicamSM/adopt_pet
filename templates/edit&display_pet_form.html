@@ -17,7 +17,7 @@
     <div class="container">
         <h2 class="display-2 text-center">Edit Pet</h2>
         <div class="input-group justify-content-center border rounded border-dark border-2 .bg-light ">
-            <form method="POST">
+            <form method="POST" class=".bg-light">
                 {{ form.hidden_tag() }}
                 {% for field in form if field.widget.input_type != 'hidden' %}
                 {% if type == checkbox %}
@@ -27,9 +27,7 @@
                 {% else %} 
                     <div class="form-group">
                         {{field.label}}
-                        <!-- {{field}} -->
                         {{field(class="form-control")}}
-                        <!-- note that if I use this class in bootstrap it is hiding my avaiable checkmark -->
                 {% endif %}
                     
                     {% for err in field.errors %}
