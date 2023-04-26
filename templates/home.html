@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}\
+<div class="container">
+<h1 class="display-2 text-center">Pets</h1>
+    <div class="row">
+        <ul> {% for pet in pets %}
+            <div class="col-sm text-center">
+                <h2><a href="/{{pet.id}}">{{pet.name}}</a></h2>
+                <img src="{{pet.photo_url}}">
+                {% if pet.available %}
+                <p>
+                    <strong>Available</strong>
+                </p>
+            </div>
+                {% endif %}
+                {% endfor %}
+        </ul>
+    </div>
+    <div class="container text-center">
+        <form action="/add">
+            <button class="btn btn-success">Add Pet</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

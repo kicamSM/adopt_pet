@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Display/Edit Pet{% endblock %}
+
+{% block content %}
+    <di class="container">
+        <h1 class="display-2 text-center">{{pet.name}}</h1>
+        <div class="row text-center">
+        <ul>
+            <img src="{{pet.photo_url}}">
+            <div class="container">
+                <p>{{pet.name}} is a {{pet.species}} and is {{pet.age}} years old</p>
+            </div>
+        </ul>
+        </div>
+    </div>
+    <div class="container">
+        <h2 class="display-2 text-center">Edit Pet</h2>
+        <div class="row text-center">
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                <div class="form-group">
+                    {{field.label}}
+                    <!-- {{field}} -->
+                    {{field(class="form-control")}}
+                    <!-- note that if I use this class in bootstrap it is hiding my avaiable checkmark -->
+                    
+                    {% for err in field.errors %}
+                    <small class="form-text text-danger">
+                    {{err}}
+                    </small>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+                <button class="btn btn-success">Submit</button>
+                <a href="/" class="btn btn-danger">Go Back</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
