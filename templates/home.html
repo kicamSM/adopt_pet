@@ -9,10 +9,12 @@
         <ul> {% for pet in pets %}
             <div class="col-sm text-center">
                 <h2><a href="/{{pet.id}}">{{pet.name}}</a></h2>
-                <img src="{{pet.photo_url}}">
+                <div class="container">
+                <img src="{{pet.photo_url}}" class="border rounded border-dark border-3">
+                </div>
                 {% if pet.available %}
                 <p>
-                    <strong>Available</strong>
+                    <strong>{{pet.name}} is available</strong>
                 </p>
             </div>
                 {% endif %}
